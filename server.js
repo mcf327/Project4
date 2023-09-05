@@ -22,6 +22,7 @@ app.use(require('./config/checkToken'));
 const port = process.env.PORT || 3001;
 
 // Put API routes here, before the "catch all" route
+app.use('/api/vendors', require('./routes/api/vendors'));
 app.use('/api/users', require('./routes/api/users'));
 
 // The following "catch all" route (note the *) is necessary

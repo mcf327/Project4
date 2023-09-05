@@ -1,3 +1,3 @@
-# MERN-Stack Infrastructure
+# StockBuddy
 
-Clone this repo to provide the starter code for a comprehensive MERN-Stack project including token-based authentication.
+An app created using the MERN-stack for tracking restaurant inventory and facilitating connection between restaurants and vendors. More details coming soon...
