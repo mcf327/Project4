@@ -1,4 +1,5 @@
 import VendorList from '../../components/VendorList/VendorList';
+import InventoryList from '../../components/InventoryList/InventoryList';
 import { useState, useEffect } from 'react';
 import * as vendorsAPI from '../../utilities/vendors-api';
 
@@ -20,7 +21,8 @@ export default function VendorsPage() {
 
   return (
     <div>
-      <VendorList vendors={vendors} onVendorClick={handleVendorClick}/>
+      <VendorList vendors={vendors} handleVendorClick={handleVendorClick}/>
+      <InventoryList />
     </div>
   );
 }

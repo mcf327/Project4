@@ -1,6 +1,4 @@
-.vendor-list {
-    gap: 20px; 
-    padding: 20px;
+.inventory-list {
     background-color: #f0f0f0;
     margin-top: 20px;
 }
