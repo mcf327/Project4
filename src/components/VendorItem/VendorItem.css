@@ -1,0 +1,25 @@
+.vendor-item {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    margin: 10px;
+    max-width: 200px; 
+}
+
+.vendor-item:hover {
+    transform: scale(1.05);
+}
+
+.vendor-item h4 {
+    font-size: 1rem; 
+    margin-bottom: 8px;
+}
+
+.vendor-item p {
+    font-size: 0.8rem; 
+    color: #666;
+}

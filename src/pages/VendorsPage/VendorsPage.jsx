@@ -3,6 +3,7 @@ import InventoryList from '../../components/InventoryList/InventoryList';
 import { useState, useEffect } from 'react';
 import * as vendorsAPI from '../../utilities/vendors-api';
 import * as itemsAPI from '../../utilities/items-api';
+import './VendorsPage.css';
 
 export default function VendorsPage() {
   const [vendors, setVendors] = useState([]);
@@ -20,13 +21,13 @@ export default function VendorsPage() {
   async function handleVendorClick(vendorId) {
     setSelectedVendor(vendorId);
     const items = await itemsAPI.getItemsByVendorId(vendorId);
-    console.log('items received from api call: ', items);
+    
     setVendorItems(items);
-    console.log('vendoritems state: ', vendorItems);
+   
   }
 
   return (
-    <div>
+    <div className="page-container">
       <VendorList vendors={vendors} handleVendorClick={handleVendorClick} selectedVendor={selectedVendor} items={vendorItems}/>
       <InventoryList />
       

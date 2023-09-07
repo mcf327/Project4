@@ -1,0 +1,13 @@
+.page-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: gray;
+}
+
+
+.vendor-list,
+.inventory-list {
+  padding: 40px;
+  border-radius: 5px;
+}
