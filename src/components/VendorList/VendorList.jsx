@@ -16,7 +16,7 @@ export default function VendorList({ vendors, handleVendorClick, selectedVendor,
             <ItemList 
                 items={items}
                 addToCart={addToCart}
-                addToInventory={addToInventory} 
+                addToInventory={addToInventory}
             />
         ) : (
             <p>No items available for this vendor.</p>

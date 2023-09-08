@@ -9,4 +9,8 @@ export function getCart() {
 
 export function addItemToCart(itemId) {
     return sendRequest(`${BASE_URL}/cart/items/${itemId}`, 'POST');
-  }
+}
+
+export function removeItemFromCart(itemId) {
+    return sendRequest(`${BASE_URL}/cart/items/${itemId}`, 'DELETE');
+}

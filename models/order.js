@@ -27,7 +27,7 @@ orderSchema.statics.getCart = function(userId) {
     );
 }
 
-orderSchema.methods.addItemToCart = async function (itemId) {
+orderSchema.methods.addItemToCart = async function(itemId) {
     const cart = this;
     const orderItem = cart.orderItems.find(orderItem => orderItem.item._id.equals(itemId));
     if (orderItem) {
@@ -39,5 +39,17 @@ orderSchema.methods.addItemToCart = async function (itemId) {
     }
     return cart.save();
 };
+
+orderSchema.methods.removeItemFromCart = async function(itemId) {
+    const cart = this;
+    const itemIndex = cart.orderItems.findIndex(orderItem =>
+        orderItem.item._id.equals(itemId)
+    );
+    if (itemIndex !== -1) {
+    cart.orderItems.splice(itemIndex, 1);
+    await cart.save();
+    }
+    return cart;
+}
 
 module.exports = mongoose.model('Order', orderSchema);

@@ -12,7 +12,14 @@ async function addToCart(req, res) {
     res.json(cart);
 }
 
+async function removeFromCart(req, res) {
+    const cart = await Order.getCart(req.user._id);
+    await cart.removeItemFromCart(req.params.id);
+    res.json(cart);
+}
+
 module.exports = {
     getCart,
-    addToCart
+    addToCart,
+    removeFromCart
 }

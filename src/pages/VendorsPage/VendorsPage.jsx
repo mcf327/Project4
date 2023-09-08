@@ -47,6 +47,11 @@ export default function VendorsPage() {
     setCart(cart);
   }
 
+  async function handleRemoveFromCart(itemId) {
+    const cart = await ordersAPI.removeItemFromCart(itemId);
+    setCart(cart);
+  }
+
   return (
     <div className="page-container">
       <VendorList 
@@ -61,6 +66,7 @@ export default function VendorsPage() {
       <OrderBox 
           cart={cart}
           inventory={inventory}
+          removeFromCart={handleRemoveFromCart}
       />
     </div>
   );

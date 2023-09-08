@@ -1,7 +1,7 @@
 import VendorItem from '../VendorItem/VendorItem';
 import './ItemList.css';
 
-export default function ItemList({ items, addToInventory, addToCart }) {
+export default function ItemList({ items, addToInventory, addToCart, removeFromCart }) {
     return (
         <div className="item-list">
             {items.map((item) => (
@@ -9,7 +9,8 @@ export default function ItemList({ items, addToInventory, addToCart }) {
                     key={item._id} 
                     item={item}
                     addToInventory={addToInventory}
-                    addToCart={addToCart} 
+                    addToCart={addToCart}
+                    removeFromCart={removeFromCart}
                 />
             ))}
         </div>
