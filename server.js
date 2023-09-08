@@ -27,6 +27,7 @@ app.use('/api/vendors', ensureLoggedIn, require('./routes/api/vendors'));
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/items', ensureLoggedIn, require('./routes/api/items'));
 app.use('/api/orders', ensureLoggedIn, require('./routes/api/orders'));
+app.use('/api/inventory', ensureLoggedIn, require('./routes/api/inventory'));
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX/API requests

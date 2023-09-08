@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import * as vendorsAPI from '../../utilities/vendors-api';
 import * as itemsAPI from '../../utilities/items-api';
 import * as ordersAPI from '../../utilities/orders-api';
+import * as inventoryAPI from '../../utilities/inventory-api';
 import './VendorsPage.css';
 import OrderBox from '../../components/OrderBox/OrderBox';
 
@@ -25,6 +26,12 @@ export default function VendorsPage() {
       setCart(cart);
     }
     getCart();
+
+    async function getInventory() {
+      const inventory = await inventoryAPI.getInventory();
+      setInventory(inventory);
+    }
+    getInventory();
   }, []);
 
   async function handleVendorClick(vendorId) {
@@ -38,8 +45,9 @@ export default function VendorsPage() {
     setVendorItems([]);
   }
 
-  function handleAddToInventory(itemId) {
-    alert('clicked the inventory button');
+  async function handleAddToInventory(itemId) {
+    const inventory = await inventoryAPI.addItemToInventory(itemId);
+    setInventory(inventory);
   }
 
   async function handleAddToCart(itemId) {
@@ -50,6 +58,11 @@ export default function VendorsPage() {
   async function handleRemoveFromCart(itemId) {
     const cart = await ordersAPI.removeItemFromCart(itemId);
     setCart(cart);
+  }
+
+  async function handleRemoveFromInventory(itemId) {
+    const inventory = await inventoryAPI.removeItemFromInventory(itemId);
+    setInventory(inventory);
   }
 
   return (
@@ -67,6 +80,7 @@ export default function VendorsPage() {
           cart={cart}
           inventory={inventory}
           removeFromCart={handleRemoveFromCart}
+          removefromInventory={handleRemoveFromInventory}
       />
     </div>
   );

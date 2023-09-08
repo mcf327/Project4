@@ -3,7 +3,7 @@ import Cart from "../Cart/Cart";
 import { useState } from 'react';
 import './OrderBox.css';
 
-export default function OrderBox({ cart, inventory, removeFromCart }) {
+export default function OrderBox({ cart, inventory, removeFromCart, removefromInventory }) {
     const [active, setActive] = useState('cart');
 
     return (
@@ -19,7 +19,8 @@ export default function OrderBox({ cart, inventory, removeFromCart }) {
                 /> 
                 : 
                 <InventoryList 
-                    inventory={inventory} 
+                    inventory={inventory}
+                    removefromInventory={removefromInventory}
                 />
             }
         </div>

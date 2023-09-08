@@ -1,9 +1,22 @@
+import InventoryItem from '../InventoryItem/InventoryItem';
 import './InventoryList.css'
 
-export default function InventoryList({ inventory }) {
+export default function InventoryList({ inventory, removefromInventory }) {
     return (
-        <div className="inventory-list">
-            <h3>This box will be where the user's inventory list goes.</h3>
+        <div>
+            {inventory && inventory.inventoryItems && inventory.inventoryItems.length > 0 ? (
+                <div className="inventory-item-container">
+                {inventory.inventoryItems.map((inventoryItem) => (
+                    <InventoryItem 
+                        key={inventoryItem._id} 
+                        inventoryItem={inventoryItem}
+                        removefromInventory={removefromInventory}
+                    />
+                ))}
+                </div>
+            ) : (
+                <p>Your inventory is empty.</p>
+            )}
         </div>
     );
 }
