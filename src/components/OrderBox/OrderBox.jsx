@@ -1,11 +1,18 @@
 import InventoryList from "../InventoryList/InventoryList";
 import Cart from "../Cart/Cart";
+import { useState } from 'react';
+import './OrderBox.css';
 
-export default function OrderBox() {
+export default function OrderBox({ cart, inventory }) {
+    const [active, setActive] = useState('cart');
+
     return (
-        <>
-            <InventoryList />
-            <Cart />
-        </>
+        <div className="order-box">
+            <div className="order-box-buttons">
+                <button onClick={() => setActive('cart')}>Cart</button>
+                <button onClick={() => setActive('')}>My Inventory</button>
+            </div>
+            {active === 'cart' ? <Cart cart={cart} /> : <InventoryList inventory={inventory} />}
+        </div>
     );
 }

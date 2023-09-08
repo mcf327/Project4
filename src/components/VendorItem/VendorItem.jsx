@@ -5,8 +5,8 @@ export default function VendorItem({ item, addToInventory, addToCart }) {
         <div className="vendor-item">
             <p><strong>{item.name}</strong></p>
             <p>${item.price.toFixed(2)}</p>
-            <button onClick={() => addToInventory(item)}>Add to Inventory</button>
-            <button onClick={() => addToCart(item)}>Add to Cart</button>
+            <button onClick={() => addToInventory(item._id)}>Add to Inventory</button>
+            <button onClick={() => addToCart(item._id)}>Add to Cart</button>
         </div>
     );
 }
