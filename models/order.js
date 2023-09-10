@@ -10,6 +10,10 @@ const orderItemSchema = new Schema({
     toJSON: { virtuals: true }
 });
 
+orderItemSchema.virtual('extPrice').get(function() {
+    return this.qty * this.item.price;
+})
+
 const orderSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     orderItems: [orderItemSchema],
@@ -17,6 +21,10 @@ const orderSchema = new Schema({
 }, {
     timestamps: true,
     toJSON: { virtuals: true }
+});
+
+orderSchema.virtual('orderTotal').get(function() {
+    return this.orderItems.reduce((total, item) => total + item.extPrice, 0);
 });
 
 orderSchema.statics.getCart = function(userId) {
@@ -51,5 +59,12 @@ orderSchema.methods.removeItemFromCart = async function(itemId) {
     }
     return cart;
 }
+
+orderSchema.methods.setItemQty = function(itemId, newQty) {
+    const cart = this;
+    const orderItem = cart.orderItems.find(orderItem => orderItem.item._id.equals(itemId));
+    orderItem.qty = newQty;
+    return cart.save();
+};
 
 module.exports = mongoose.model('Order', orderSchema);

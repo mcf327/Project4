@@ -1,6 +1,6 @@
 import OrderItem from '../OrderItem/OrderItem';
 
-export default function Cart({ cart, removeFromCart }) {
+export default function Cart({ cart, removeFromCart, changeCartItemQty }) {
   return (
     <div>
       {cart && cart.orderItems && cart.orderItems.length > 0 ? (
@@ -10,8 +10,20 @@ export default function Cart({ cart, removeFromCart }) {
                 key={orderItem._id} 
                 orderItem={orderItem}
                 removeFromCart={removeFromCart}
+                changeCartItemQty={changeCartItemQty}
             />
           ))}
+           <section className="total">
+              {cart.isPaid ?
+                <span className="right">TOTAL&nbsp;&nbsp;</span>
+                :
+                <button
+                  className="btn-sm"
+                  disabled={!cart.orderItems.length}
+                >CHECKOUT</button>
+              }
+              <span className="right">${cart.orderTotal.toFixed(2)}</span>
+            </section>
         </div>
       ) : (
         <p>Your cart is empty.</p>

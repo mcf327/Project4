@@ -65,6 +65,11 @@ export default function VendorsPage() {
     setInventory(inventory);
   }
 
+  async function handleChangeCartItemQty(itemId, newQty) {
+    const updatedCart = await ordersAPI.changeCartItemQty(itemId, newQty);
+    setCart(updatedCart);
+  }
+
   return (
     <div className="page-container">
       <VendorList 
@@ -81,6 +86,7 @@ export default function VendorsPage() {
           inventory={inventory}
           removeFromCart={handleRemoveFromCart}
           removefromInventory={handleRemoveFromInventory}
+          changeCartItemQty={handleChangeCartItemQty}
       />
     </div>
   );

@@ -13,3 +13,7 @@ export function addItemToCart(itemId) {
 export function removeItemFromCart(itemId) {
     return sendRequest(`${BASE_URL}/cart/items/${itemId}`, 'DELETE');
 }
+
+export function changeCartItemQty(itemId, newQty) {
+    return sendRequest(`${BASE_URL}/cart/qty`, 'PUT', { itemId, newQty });
+}

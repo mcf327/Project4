@@ -18,8 +18,15 @@ async function removeFromCart(req, res) {
     res.json(cart);
 }
 
+async function changeCartItemQty(req, res) {
+    const cart = await Order.getCart(req.user._id);
+    await cart.setItemQty(req.body.itemId, req.body.newQty);
+    res.json(cart);
+}
+
 module.exports = {
     getCart,
     addToCart,
-    removeFromCart
+    removeFromCart,
+    changeCartItemQty
 }
