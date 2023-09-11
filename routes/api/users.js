@@ -11,6 +11,9 @@ router.post('/', usersCtrl.create);
 // POST /api/users/login
 router.post('/login', usersCtrl.login);
 
+// POST /api/users/vendors
+router.post('/vendors', usersCtrl.registerVendor);
+
 router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
 
 

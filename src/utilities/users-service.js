@@ -11,6 +11,12 @@ export async function signUp(userData) {
   return getUser();
 }
 
+export async function registerVendor(userData) {
+  const token = await usersAPI.registerVendor(userData);
+  localStorage.setItem('token', token);
+  return getUser();
+}
+
 export async function login(credentials) {
     const token = await usersAPI.login(credentials);
     localStorage.setItem('token', token);

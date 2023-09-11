@@ -16,7 +16,9 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  userType: { type: String, default: 'user' },
+  vendorId: { type: Schema.Types.ObjectId, ref: 'Vendor' },
 }, {
   timestamps: true,
   toJSON: {

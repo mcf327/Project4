@@ -1,11 +1,13 @@
 const jwt = require('jsonwebtoken');
 const User = require('../../models/user');
+const Vendor = require('../../models/vendor');
 const bcrypt = require('bcrypt');
 
 module.exports = {
   create,
   login,
-  checkToken
+  checkToken,
+  registerVendor
 };
 
 async function create(req, res) {
@@ -28,6 +30,20 @@ async function login(req, res) {
     res.json(createJWT(user));
   } catch {
     res.status(400).json('Bad Credentials');
+  }
+}
+
+async function registerVendor(req, res) {
+  try {
+    const user = await User.create({
+      ...req.body,
+      userType: 'vendor'
+    });
+    const token = createJWT(user);
+    res.json(token);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
   }
 }
 
