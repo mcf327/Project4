@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const itemSchema = require('./itemSchema');
 
 const inventoryItemSchema = new Schema({
-    qty: { type: Number, default: 1 },
+    qty: { type: Number, default: 0 },
     minimumStock: { type: Number, default: 0 },
     item: itemSchema
 }, {
@@ -31,7 +31,7 @@ inventorySchema.methods.addItemToInventory = async function(itemId) {
     const inventory = this;
     const inventoryItem = inventory.inventoryItems.find(inventoryItem => inventoryItem.item._id.equals(itemId));
     if (inventoryItem) {
-      inventoryItem.qty += 1;
+      return;
     } else {
       const Item = mongoose.model('Item');
       const item = await Item.findById(itemId);
@@ -50,6 +50,20 @@ inventorySchema.methods.removeItemFromInventory = async function(itemId) {
     await inventory.save();
     }
     return inventory;
+}
+
+inventorySchema.methods.setItemQty = async function(itemId, newQty) {
+    const inventory = this;
+    const inventoryItem = inventory.inventoryItems.find(inventoryItem => inventoryItem.item._id.equals(itemId));
+    inventoryItem.qty = newQty;
+    return inventory.save();
+}
+
+inventorySchema.methods.setItemMin = async function(itemId, newMin) {
+    const inventory = this;
+    const inventoryItem = inventory.inventoryItems.find(inventoryItem => inventoryItem.item._id.equals(itemId));
+    inventoryItem.minimumStock = newMin;
+    return inventory.save();
 }
 
 

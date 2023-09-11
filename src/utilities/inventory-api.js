@@ -13,3 +13,11 @@ export function addItemToInventory(itemId) {
 export function removeItemFromInventory(itemId) {
     return sendRequest(`${BASE_URL}/items/${itemId}`, 'DELETE');
 }
+
+export function changeInventoryItemQty(itemId, newQty) {
+    return sendRequest(`${BASE_URL}/qty`, 'PUT', { itemId, newQty });
+}
+
+export function changeInventoryMin(itemId, newMin) {
+    return sendRequest(`${BASE_URL}/min`, 'PUT', { itemId, newMin });
+}

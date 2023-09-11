@@ -50,6 +50,16 @@ export default function VendorsPage() {
     setInventory(inventory);
   }
 
+  async function handleChangeInventoryQty(itemId, newQty) {
+    const updatedInventory = await inventoryAPI.changeInventoryItemQty(itemId, newQty);
+    setInventory(updatedInventory);
+  }
+
+  async function handleChangeInventoryMin(itemId, newMin) {
+    const updatedInventory = await inventoryAPI.changeInventoryMin(itemId, newMin);
+    setInventory(updatedInventory);
+  }
+
   async function handleAddToCart(itemId) {
     const cart = await ordersAPI.addItemToCart(itemId);
     setCart(cart);
@@ -87,6 +97,8 @@ export default function VendorsPage() {
           removeFromCart={handleRemoveFromCart}
           removefromInventory={handleRemoveFromInventory}
           changeCartItemQty={handleChangeCartItemQty}
+          changeInventoryQty={handleChangeInventoryQty}
+          changeInventoryMin={handleChangeInventoryMin}
       />
     </div>
   );

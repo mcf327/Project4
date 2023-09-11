@@ -18,8 +18,22 @@ async function removeFromInventory(req, res) {
     res.json(inventory);
 }
 
+async function setInventoryQty(req, res) {
+    const inventory = await Inventory.getInventory(req.user._id);
+    await inventory.setItemQty(req.body.itemId, req.body.newQty);
+    res.json(inventory);
+}
+
+async function setInventoryMin(req, res) {
+    const inventory = await Inventory.getInventory(req.user._id);
+    await inventory.setItemMin(req.body.itemId, req.body.newMin);
+    res.json(inventory);
+}
+
 module.exports = {
     getInventory,
     addToInventory,
-    removeFromInventory
+    removeFromInventory,
+    setInventoryQty,
+    setInventoryMin
 }
