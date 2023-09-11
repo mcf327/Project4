@@ -36,7 +36,6 @@ export default function InventoryItem({ inventoryItem, removefromInventory, chan
     return (
         <div className="inventory-item">
             {inventoryItem.item.name} &nbsp;
-            ${inventoryItem.item.price.toFixed(2)} &nbsp;
             On Hand:&nbsp;
             {isEditingStock ? (
                 <input

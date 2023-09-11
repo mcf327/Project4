@@ -80,6 +80,24 @@ export default function VendorsPage() {
     setCart(updatedCart);
   }
 
+  async function addCustomItem(itemData) {
+      const newItem = {
+        name: itemData.name,
+        category: itemData.category,
+        price: itemData.price,
+        custom: true,
+      };
+  
+      const newInventoryItem = {
+        qty: itemData.qty,
+        minimumStock: itemData.minimumStock,
+        item: newItem, 
+      };
+      await itemsAPI.createCustomItem(newItem, newInventoryItem);
+      const updatedInventory = await inventoryAPI.getInventory();
+      setInventory(updatedInventory);
+  }
+
   return (
     <div className="page-container">
       <VendorList 
@@ -99,6 +117,7 @@ export default function VendorsPage() {
           changeCartItemQty={handleChangeCartItemQty}
           changeInventoryQty={handleChangeInventoryQty}
           changeInventoryMin={handleChangeInventoryMin}
+          addCustomItem={addCustomItem}
       />
     </div>
   );

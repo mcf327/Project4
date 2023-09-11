@@ -9,4 +9,12 @@ export async function getAll() {
 export async function getItemsByVendorId(vendorId) {
     const url = `${BASE_URL}/byVendor/${vendorId}`;
     return sendRequest(url);
-  }
+}
+
+export function createCustomItem(itemData, inventoryItemData) {
+    const payload = {
+        ...itemData,
+        ...inventoryItemData,
+    };
+    return sendRequest(`${BASE_URL}/custom`, 'POST', payload);
+}
