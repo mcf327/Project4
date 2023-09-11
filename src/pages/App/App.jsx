@@ -5,6 +5,7 @@ import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import VendorsPage from '../VendorsPage/VendorsPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+import VendorDashboard from '../../pages/VendorDashboard/VendorDashboard';
 import NavBar from '../../components/NavBar/NavBar';
 
 export default function App() {
@@ -12,18 +13,23 @@ export default function App() {
 
   return (
     <main className="App">
-      { user ?
-          <>
-            <NavBar user={user} setUser={setUser}  />
-            <Routes>
-              {/* Route components in here */}
-              <Route path="/orders/new" element={<VendorsPage />} />
-              <Route path="/orders" element={<OrderHistoryPage />} />
-            </Routes>
-          </>
-          :
-          <AuthPage setUser={setUser} />
-      }
+      {user ? (
+        <>
+          <NavBar user={user} setUser={setUser} />
+          {user.userType === 'vendor' ? (
+              <VendorDashboard user={user} /> 
+            ) : (
+              <VendorsPage /> 
+          )}
+          <Routes>
+            {/* Route components in here */}
+            <Route path="/orders/new" element={<VendorsPage />} />
+            <Route path="/orders" element={<OrderHistoryPage />} />
+          </Routes>
+        </>
+      ) : (
+        <AuthPage setUser={setUser} />
+      )}
     </main>
   );
 }
