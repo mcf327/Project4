@@ -1,35 +1,34 @@
 const Vendor = require('../../models/vendor');
 
 async function getAll(req, res) {
-    try {
-        const vendors = await Vendor.find();
-        res.json(vendors);
-    } catch (err) {
-        res.json({ error: 'An error occurred while fetching vendors' });
-    }
+    const vendors = await Vendor.find();
+    res.json(vendors);
 }
 
 async function create(req, res) {
-    try {
-        req.body.userId = req.user._id;
-        const vendor = await Vendor.create(req.body);
-        res.json(vendor);
-    } catch (error) {
-        console.log('error creating vendor object: ', error);
-    }
+    req.body.userId = req.user._id;
+    const vendor = await Vendor.create(req.body);
+    res.json(vendor);
 }
 
 async function getStoreByUserId(req, res) {
-    try {
-        const store = await Vendor.findOne({ userId: req.params.userId });
-        if (!store) {
-            return res.status(404).json({ message: 'Store not found' });
-        }
-        res.json(store);
-    } catch (error) {
-        console.error('Error fetching store:', error);
-        res.status(500).json({ error: 'An error occurred while fetching the store' });
-    }
+    const store = await Vendor.findOne({ userId: req.params.userId });
+    res.json(store);
+}
+
+async function addItemToStore(req, res) {
+    const { userId } = req.params;
+    const { newItem } = req.body;
+    const vendor = await Vendor.findOne({ userId })
+    await vendor.addItemToStore(newItem);
+    res.json(vendor.items);
+}
+
+async function deleteItemFromStore(req, res) {
+    const { userId, itemId } = req.params;
+    const vendor = await Vendor.findOne({ userId });
+    await vendor.deleteItemFromStore(itemId);
+    res.json(vendor.items);
 }
 
 async function updateStoreInfo(req, res) {
@@ -55,4 +54,6 @@ module.exports = {
     create,
     getStoreByUserId,
     updateStoreInfo,
+    addItemToStore,
+    deleteItemFromStore
 }

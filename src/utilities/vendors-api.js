@@ -17,3 +17,11 @@ export async function getStoreByUserId(userId) {
 export function updateStoreInfo(userId, updatedData) {
     return sendRequest(`${BASE_URL}/store/${userId}`, 'PUT', updatedData);
 }
+
+export async function addItemToStore(userId, newItem) {
+    return sendRequest(`${BASE_URL}/store/${userId}/addItem`, 'POST', { newItem });
+}
+
+export async function deleteItemFromStore(userId, itemId) {
+    return sendRequest(`${BASE_URL}/store/${userId}/deleteItem/${itemId}`, 'DELETE');
+}

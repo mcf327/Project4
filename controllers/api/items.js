@@ -2,13 +2,22 @@ const Item = require('../../models/item');
 const Inventory = require('../../models/inventory');
 
 async function getItemsByVendorId(req, res) {
-    try {
-        const vendorId = req.params.vendorId;
-        const items = await Item.find({ vendor: vendorId });
-        res.json(items);
-    } catch (err) {
-        res.json({ error: 'Internal server error' });
-    }
+    const vendorId = req.params.vendorId;
+    const items = await Item.find({ vendor: vendorId });
+    res.json(items);
+}
+
+async function createItem(req, res) {
+    const itemData = req.body;
+    const newItem = new Item(itemData);
+    await newItem.save();
+    res.json(newItem);
+}
+
+async function getItemById(req, res) {
+    const itemId = req.params.itemId;
+    const item = await Item.findById(itemId);
+    res.json(item);
 }
 
 async function createCustomItem(req, res) {
@@ -39,5 +48,7 @@ async function createCustomItem(req, res) {
 
 module.exports = {
     getItemsByVendorId,
-    createCustomItem
+    createCustomItem,
+    createItem,
+    getItemById
 }
