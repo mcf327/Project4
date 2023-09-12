@@ -19,8 +19,40 @@ async function create(req, res) {
     }
 }
 
+async function getStoreByUserId(req, res) {
+    try {
+        const store = await Vendor.findOne({ userId: req.params.userId });
+        if (!store) {
+            return res.status(404).json({ message: 'Store not found' });
+        }
+        res.json(store);
+    } catch (error) {
+        console.error('Error fetching store:', error);
+        res.status(500).json({ error: 'An error occurred while fetching the store' });
+    }
+}
+
+async function updateStoreInfo(req, res) {
+    try {
+        const { userId } = req.params;
+        const updatedData = req.body;
+        const store = await Vendor.findOne({ userId });
+
+        store.name = updatedData.name || store.name;
+        store.description = updatedData.description || store.description;
+        store.address = updatedData.address || store.address;
+        store.phone = updatedData.phone || store.phone;
+        store.contactEmail = updatedData.contactEmail || store.contactEmail;
+        await store.save();
+        res.json(store);
+    } catch (error) {
+        console.log('error updating store info:', error);
+    }
+}
 
 module.exports = {
     getAll,
-    create
+    create,
+    getStoreByUserId,
+    updateStoreInfo,
 }

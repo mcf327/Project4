@@ -1,0 +1,7 @@
+.vendor-dashboard {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: gray;
+    padding: 10px;
+}

@@ -2,8 +2,8 @@ import { useState } from 'react';
 import * as vendorsAPI from '../../utilities/vendors-api';
 import './CreateStoreForm.css';
 
-export default function CreateStoreForm() {
-    const [storeName, setStoreName] = useState('');
+export default function CreateStoreForm({ setHasCreatedStore, setStoreData, user }) {
+    const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
@@ -13,7 +13,7 @@ export default function CreateStoreForm() {
     async function handleSubmit(evt) {
         evt.preventDefault();
         const vendorData = {
-            storeName,
+            name,
             description,
             address,
             phone,
@@ -22,6 +22,9 @@ export default function CreateStoreForm() {
 
         try {
             await vendorsAPI.createVendor(vendorData);
+            const updatedStoreData = await vendorsAPI.getStoreByUserId(user._id);
+            setStoreData(updatedStoreData);
+            setHasCreatedStore(true);
         } catch (error) {
             console.log('error creating store: ', error);
             setError('An error occurred. Please try again later.');
@@ -38,9 +41,9 @@ export default function CreateStoreForm() {
             <label>Store Name</label>
             <input
               type="text"
-              name="storeName"
-              value={storeName}
-              onChange={(e) => setStoreName(e.target.value)}
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               required
             />
 

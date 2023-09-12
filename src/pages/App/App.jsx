@@ -13,23 +13,23 @@ export default function App() {
 
   return (
     <main className="App">
-      {user ? (
-        <>
-          <NavBar user={user} setUser={setUser} />
-          {user.userType === 'vendor' ? (
-              <VendorDashboard user={user} /> 
+            {user ? (
+                <>
+                    <NavBar user={user} setUser={setUser} />
+                    {user.userType === 'vendor' ? (
+                        <VendorDashboard user={user} />
+                    ) : (
+                        <>
+                          <Routes>
+                              <Route path="/orders/new" element={<VendorsPage />} />
+                              <Route path="/orders" element={<OrderHistoryPage />} />
+                          </Routes>
+                        </>
+                    )}
+                </>
             ) : (
-              <VendorsPage /> 
-          )}
-          <Routes>
-            {/* Route components in here */}
-            <Route path="/orders/new" element={<VendorsPage />} />
-            <Route path="/orders" element={<OrderHistoryPage />} />
-          </Routes>
-        </>
-      ) : (
-        <AuthPage setUser={setUser} />
-      )}
-    </main>
+                <AuthPage setUser={setUser} />
+            )}
+        </main>
   );
 }
