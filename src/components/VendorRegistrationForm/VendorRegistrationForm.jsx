@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { registerVendor } from '../../utilities/users-service';
+import './VendorRegistrationForm.css';
 
 export default class VendorRegistrationForm extends Component {
   state = {
@@ -34,7 +35,7 @@ export default class VendorRegistrationForm extends Component {
   render() {
     const disable = this.state.password !== this.state.confirm;
     return (
-      <div>
+      <div className="vendor-registration">
         <div className="form-container">
           <form autoComplete="off" onSubmit={this.handleSubmit}>
             <label>Account Name</label>

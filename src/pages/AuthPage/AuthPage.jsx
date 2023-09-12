@@ -10,24 +10,22 @@ export default function AuthPage({ setUser }) {
 
   return (
     <main>
-        <h1>AuthPage</h1>
-        {showLogin ? (
-            <LoginForm setUser={setUser} />
-        ) : (
-            <SignUpForm setUser={setUser} />
-        )}
-        <button onClick={() => setShowLogin(!showLogin)}>
-            {showLogin ? 'Sign Up' : 'Log In'}
-        </button>
-
-        <button onClick={() => setShowVendorRegistration(!showVendorRegistration)}>
-                Vendors, click here to register!
-        </button>
-
-            {/* Conditionally render the VendorRegistrationForm */}
-            {showVendorRegistration && (
+            <h1>Welcome to StockBuddy</h1>
+            {/* Conditionally render based on showLogin and showVendorRegistration */}
+            {showLogin && !showVendorRegistration ? (
+                <LoginForm setUser={setUser} />
+            ) : showVendorRegistration ? (
                 <VendorRegistrationForm setUser={setUser} />
+            ) : (
+                <SignUpForm setUser={setUser} />
             )}
-    </main>
+            <button onClick={() => setShowLogin(!showLogin)}>
+                {showLogin ? 'Sign Up' : 'Log In'}
+            </button>
+
+            <button onClick={() => setShowVendorRegistration(!showVendorRegistration)}>
+                Sign Up As Vendor
+            </button>
+        </main>
   );
 }

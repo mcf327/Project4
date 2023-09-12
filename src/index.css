@@ -5,7 +5,7 @@
   --tan-2: #E7E2DD;
   --tan-3: #E2D9D1;
   --tan-4: #D3C1AE;
-  --orange: #F67F00;
+  --orange: #007BFF;
   --text-light: #968c84;
   --text-dark: #615954;
 }
@@ -21,7 +21,10 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-4);
+  background-color: #F8F8F8;
+  background-image: url('../public/images/background.png');
+  background-size: cover; 
+  background-repeat: no-repeat;
   padding: 2vmin;
   height: 100vh;
 }
@@ -81,7 +84,7 @@ code {
 .form-container {
   padding: 3vmin;
   background-color: var(--tan-1);
-  border: .1vmin solid var(--tan-3);
+  border: .1vmin solid darkgray;
   border-radius: 1vmin;
 }
 
@@ -94,7 +97,7 @@ form {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1.25vmin;
-  color: var(--text-light);
+  color: black;
 }
 
 label {
@@ -106,7 +109,7 @@ label {
 input {
   padding: 1vmin;
   font-size: 2vmin;
-  border: .1vmin solid var(--tan-3);
+  border: .1vmin solid darkgray;
   border-radius: .5vmin;
   color: var(--text-dark);
   background-image: none !important; /* prevent lastpass */
@@ -144,7 +147,7 @@ button.btn-xs {
 
 button:disabled, form:invalid button[type="submit"] {
   cursor: not-allowed;
-  background-color: var(--tan-4);
+  background-color: darkgray;
 }
 
 button[type="submit"] {

@@ -1,0 +1,12 @@
+.login-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.form-container {
+    background-color: #F8F8F8;
+    width: 50%;
+
+}
