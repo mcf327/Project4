@@ -1,5 +1,6 @@
 const Item = require('../../models/item');
 const Inventory = require('../../models/inventory');
+const Vendor = require('../../models/vendor');
 
 async function getItemsByVendorId(req, res) {
     const vendorId = req.params.vendorId;
@@ -9,6 +10,8 @@ async function getItemsByVendorId(req, res) {
 
 async function createItem(req, res) {
     const itemData = req.body;
+    const vendor = await Vendor.findOne({ userId: req.user._id });
+    itemData.vendor = vendor._id;
     const newItem = new Item(itemData);
     await newItem.save();
     res.json(newItem);
