@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './InventoryItem.css';
 
 export default function InventoryItem({ inventoryItem, removefromInventory, changeInventoryQty, changeInventoryMin }) {
@@ -6,6 +6,11 @@ export default function InventoryItem({ inventoryItem, removefromInventory, chan
     const [isEditingMin, setIsEditingMin] = useState(false);
     const [newQty, setNewQty] = useState(inventoryItem.qty);
     const [newMin, setNewMin] = useState(inventoryItem.minimumStock);
+    const [lowStock, setLowStock] = useState(false);
+
+    useEffect(() => {
+        setLowStock(newQty < newMin);
+    }, [newQty, newMin]);
 
     function handleEditStockClick() {
         setIsEditingStock(true);
@@ -34,7 +39,7 @@ export default function InventoryItem({ inventoryItem, removefromInventory, chan
     }
 
     return (
-        <div className="inventory-item">
+        <div className={`inventory-item ${lowStock ? 'red-background' : ''}`}>
             {inventoryItem.item.name} &nbsp;
             On Hand:&nbsp;
             {isEditingStock ? (
