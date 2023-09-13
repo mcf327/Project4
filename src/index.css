@@ -25,6 +25,7 @@ body {
   background-image: url('../public/images/background.png'); 
   background-size: cover; 
   background-repeat: no-repeat;
+  background-attachment: fixed;
   padding: 2vmin;
   height: 100vh;
 }
