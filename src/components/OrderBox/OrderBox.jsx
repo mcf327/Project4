@@ -3,7 +3,7 @@ import Cart from "../Cart/Cart";
 import { useState } from 'react';
 import './OrderBox.css';
 
-export default function OrderBox({ cart, inventory, removeFromCart, removefromInventory, changeCartItemQty, changeInventoryQty, changeInventoryMin, addCustomItem }) {
+export default function OrderBox({ cart, inventory, removeFromCart, removefromInventory, changeCartItemQty, changeInventoryQty, changeInventoryMin, addCustomItem, handleCheckout }) {
     const [active, setActive] = useState('cart');
 
     return (
@@ -17,6 +17,7 @@ export default function OrderBox({ cart, inventory, removeFromCart, removefromIn
                     cart={cart}
                     removeFromCart={removeFromCart}
                     changeCartItemQty={changeCartItemQty}
+                    handleCheckout={handleCheckout}
                 /> 
                 : 
                 <InventoryList 

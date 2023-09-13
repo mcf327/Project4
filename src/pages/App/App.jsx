@@ -20,8 +20,8 @@ export default function App() {
                         <VendorDashboard user={user} />
                     ) : (
                         <>
-                            <VendorsPage />
                             <Routes>
+                                <Route path="/orders/new" element={<VendorsPage />} />
                                 <Route path="/orders" element={<OrderHistoryPage />} />
                             </Routes>
                         </>

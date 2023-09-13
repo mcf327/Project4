@@ -1,6 +1,6 @@
 import OrderItem from '../OrderItem/OrderItem';
 
-export default function Cart({ cart, removeFromCart, changeCartItemQty }) {
+export default function Cart({ cart, removeFromCart, changeCartItemQty, handleCheckout }) {
   return (
     <div>
       {cart && cart.orderItems && cart.orderItems.length > 0 ? (
@@ -19,6 +19,7 @@ export default function Cart({ cart, removeFromCart, changeCartItemQty }) {
                 :
                 <button
                   className="btn-sm"
+                  onClick={handleCheckout}
                   disabled={!cart.orderItems.length}
                 >CHECKOUT</button>
               }

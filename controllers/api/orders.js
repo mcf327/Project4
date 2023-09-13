@@ -24,9 +24,23 @@ async function changeCartItemQty(req, res) {
     res.json(cart);
 }
 
+async function checkout(req, res) {
+    const cart = await Order.getCart(req.user._id);
+    cart.isPaid = true;
+    await cart.save();
+    res.json(cart);
+}
+
+async function getUserOrderHistory(req, res) {
+    const orderHistory = await Order.find({ user: req.user._id }).sort({ createdAt: -1 });
+    res.json(orderHistory);
+}
+
 module.exports = {
     getCart,
     addToCart,
     removeFromCart,
-    changeCartItemQty
+    changeCartItemQty,
+    checkout,
+    getUserOrderHistory
 }

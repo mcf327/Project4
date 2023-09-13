@@ -6,13 +6,13 @@ export default function OrderItem({ orderItem, removeFromCart, changeCartItemQty
             {orderItem.item.name} &nbsp;
             ${orderItem.item.price.toFixed(2)} &nbsp;
             <button
-            className="btn-xs"
-            onClick={() => changeCartItemQty(orderItem.item._id, orderItem.qty - 1)}
+                className="btn-xs"
+                onClick={() => changeCartItemQty(orderItem.item._id, orderItem.qty - 1)}
             >−</button> 
-            <span>{orderItem.qty}</span>
+            {orderItem.qty}
             <button
-            className="btn-xs"
-            onClick={() => changeCartItemQty(orderItem.item._id, orderItem.qty + 1)}
+                className="btn-xs"
+                onClick={() => changeCartItemQty(orderItem.item._id, orderItem.qty + 1)}
             >+</button> 
             <button className="btn-sm" onClick={() => removeFromCart(orderItem.item._id)}>X</button>
         </div>

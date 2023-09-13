@@ -1,5 +1,6 @@
 import VendorList from '../../components/VendorList/VendorList';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as vendorsAPI from '../../utilities/vendors-api';
 import * as itemsAPI from '../../utilities/items-api';
 import * as ordersAPI from '../../utilities/orders-api';
@@ -13,6 +14,8 @@ export default function VendorsPage() {
   const [vendorItems, setVendorItems] = useState([]);
   const [inventory, setInventory] = useState([]);
   const [cart, setCart] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(function() {
     async function getVendors() {
@@ -80,6 +83,11 @@ export default function VendorsPage() {
     setCart(updatedCart);
   }
 
+  async function handleCheckout() {
+    await ordersAPI.checkout();
+    navigate('/orders');
+  }
+
   async function addCustomItem(itemData) {
       const newItem = {
         name: itemData.name,
@@ -118,6 +126,7 @@ export default function VendorsPage() {
           changeInventoryQty={handleChangeInventoryQty}
           changeInventoryMin={handleChangeInventoryMin}
           addCustomItem={addCustomItem}
+          handleCheckout={handleCheckout}
       />
     </div>
   );
