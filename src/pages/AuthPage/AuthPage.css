@@ -5,14 +5,13 @@ main {
     margin-top: 75px;
 }
 
-
 h1 {
     font-size: 24px;
     margin-bottom: 20px;
 }
 
 button {
-    background-color: #007BFF;
+    background-color: #11703e; /* Darkish green color */
     color: #FFFFFF;
     padding: 10px 20px;
     border: none;
@@ -22,5 +21,6 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #00572f; /* Darker green on hover */
 }
+

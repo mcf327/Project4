@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './NewItemForm.css';
 
 export default function NewItemForm({ addItem }) {
     const [name, setName] = useState('');
@@ -16,27 +17,29 @@ export default function NewItemForm({ addItem }) {
         setPrice('');
     }
     return (
-        <div className="new-item-form">
-            <h2>Add a New Item</h2>
-            <input
-                type="text"
-                placeholder="Item Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-            />
-            <input
-                type="text"
-                placeholder="Category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-            />
-            <input
-                type="number"
-                placeholder="Price"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-            />
-            <button onClick={handleAddItemClick}>Add</button>
+        <div className="new-item-form-container">
+            <div className="new-item-form">
+                <h2>Add a New Item</h2>
+                <input
+                    type="text"
+                    placeholder="Item Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Category"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                />
+                <input
+                    type="number"
+                    placeholder="Price"
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                />
+                <button onClick={handleAddItemClick}>Add</button>
+            </div>
         </div>
         );
     }

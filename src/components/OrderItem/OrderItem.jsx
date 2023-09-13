@@ -14,7 +14,7 @@ export default function OrderItem({ orderItem, removeFromCart, changeCartItemQty
             className="btn-xs"
             onClick={() => changeCartItemQty(orderItem.item._id, orderItem.qty + 1)}
             >+</button> 
-            <button onClick={() => removeFromCart(orderItem.item._id)}>X</button>
+            <button className="btn-sm" onClick={() => removeFromCart(orderItem.item._id)}>X</button>
         </div>
     );
 }

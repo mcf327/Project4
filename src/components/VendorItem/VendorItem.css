@@ -1,5 +1,4 @@
 .vendor-item {
-    width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     background-color: #fff;
@@ -7,14 +6,9 @@
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
     max-width: 200px; 
 }
 
-.vendor-item:hover {
-    transform: scale(1.05);
-}
 
 .vendor-item h4 {
     font-size: 1rem; 

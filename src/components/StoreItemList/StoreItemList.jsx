@@ -25,7 +25,7 @@ export default function StoreItemList({ storeData, addItem, deleteItem }) {
 
     return (
         <div className="store-item-list">
-            <h2>Store Items</h2>
+            <h3>Store Items</h3>
                 {itemDetails.map(item => (
                    <StoreItem
                       key={item._id}
@@ -33,7 +33,6 @@ export default function StoreItemList({ storeData, addItem, deleteItem }) {
                       deleteItem={deleteItem}
                    />
                 ))}
-            <NewItemForm addItem={addItem} />
         </div>
     );
   }

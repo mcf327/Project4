@@ -1,6 +1,7 @@
 import CreateStoreForm from '../../components/CreateStoreForm/CreateStoreForm';
 import StoreInfoCard from '../../components/StoreInfoCard/StoreInfoCard';
 import StoreItemList from '../../components/StoreItemList/StoreItemList';
+import NewItemForm from '../../components/NewItemForm/NewItemForm';
 import { useState, useEffect } from 'react';
 import * as vendorsAPI from '../../utilities/vendors-api';
 import * as itemsAPI from '../../utilities/items-api';
@@ -67,14 +68,19 @@ export default function VendorDashboard({ user }) {
             console.log('error deleting item: ', error);
         }
     }
-    
+
     return (
         <div>
-            <h3>Welcome to Your Vendor Dashboard!</h3>
+            <h3>Your Vendor Dashboard</h3>
             {hasCreatedStore && storeData ? (
-                <div className="vendor-dashboard">
-                    <StoreInfoCard storeData={storeData} onSave={saveStoreData} />
-                    <StoreItemList storeData={storeData} addItem={handleAddItem} deleteItem={handleDeleteItem} />
+                <div className="dashboard-container">
+                    <div className="vendor-dashboard">
+                        <StoreInfoCard storeData={storeData} onSave={saveStoreData} />
+                        <StoreItemList storeData={storeData} addItem={handleAddItem} deleteItem={handleDeleteItem} />
+                    </div>
+                    <div>
+                        <NewItemForm addItem={handleAddItem} />
+                    </div>
                 </div>
             ) : (
                 <CreateStoreForm 

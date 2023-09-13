@@ -8,10 +8,8 @@ export default function StoreItem({ item, deleteItem }) {
 
   return (
     <div className="store-item">
-      <strong>Name:</strong> {item.name}<br />
-      <strong>Category:</strong> {item.category}<br />
-      <strong>Price:</strong> ${item.price}<br />
-      <button onClick={handleDeleteClick}>X</button>
+      <strong>{item.name}</strong> &nbsp;Category: {item.category} ${item.price}
+      <button className="btn-xs" onClick={handleDeleteClick}>X</button>
     </div>
   );
 }

@@ -9,8 +9,8 @@ export default function OrderBox({ cart, inventory, removeFromCart, removefromIn
     return (
         <div className="order-box">
             <div className="order-box-buttons">
-                <button onClick={() => setActive('cart')}>Cart</button>
-                <button onClick={() => setActive('')}>My Inventory</button>
+                <button className="btn-sm" onClick={() => setActive('cart')}>Cart</button>
+                <button className="btn-sm" onClick={() => setActive('')}>My Inventory</button>
             </div>
             {active === 'cart' ? 
                 <Cart 
