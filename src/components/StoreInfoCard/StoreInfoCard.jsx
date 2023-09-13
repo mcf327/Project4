@@ -30,11 +30,11 @@ export default function StoreInfoCard({ storeData, onSave }) {
             ) : (
                 <>
                     <h2>Your Store Info:</h2>
-                    <p>Store Name: {storeData.name}</p>
-                    <p>Description: {storeData.description}</p>
-                    <p>Address: {storeData.address}</p>
-                    <p>Phone: {storeData.phone}</p>
-                    <p>Contact Email: {storeData.contactEmail}</p>
+                    <p><strong>Store Name: </strong>{storeData.name}</p>
+                    <p><strong>Description: </strong>{storeData.description}</p>
+                    <p><strong>Address: </strong>{storeData.address}</p>
+                    <p><strong>Phone: </strong>{storeData.phone}</p>
+                    <p><strong>Contact Email: </strong>{storeData.contactEmail}</p>
                     <button onClick={handleEditClick}>Edit</button>
                 </>
             )}

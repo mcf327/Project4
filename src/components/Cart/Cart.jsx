@@ -22,7 +22,7 @@ export default function Cart({ cart, removeFromCart, changeCartItemQty }) {
                   disabled={!cart.orderItems.length}
                 >CHECKOUT</button>
               }
-              <span className="right">${cart.orderTotal.toFixed(2)}</span>
+              <span className="right">Total: ${cart.orderTotal.toFixed(2)}</span>
             </section>
         </div>
       ) : (

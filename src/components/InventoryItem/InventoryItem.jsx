@@ -60,7 +60,7 @@ export default function InventoryItem({ inventoryItem, removefromInventory, chan
             ) : (
                 <span onClick={handleEditMinClick}>{inventoryItem.minimumStock} &nbsp;</span> 
             )}
-            <button onClick={() => removefromInventory(inventoryItem.item._id)}>X</button>
+            <button className="btn-sm" onClick={() => removefromInventory(inventoryItem.item._id)}>X</button>
         </div>
     );
 }

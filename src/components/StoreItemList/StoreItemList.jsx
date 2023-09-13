@@ -1,10 +1,9 @@
 import StoreItem from '../StoreItem/StoreItem';
-import NewItemForm from '../NewItemForm/NewItemForm';
 import * as itemsAPI from '../../utilities/items-api';
 import { useState, useEffect } from 'react';
 import './StoreItemList.css';
 
-export default function StoreItemList({ storeData, addItem, deleteItem }) {
+export default function StoreItemList({ storeData, deleteItem }) {
     
     const items = storeData?.items || [];
     const [itemDetails, setItemDetails] = useState([]);

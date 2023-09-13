@@ -38,8 +38,8 @@ export default function InventoryList({ inventory, removefromInventory, changeIn
                 ) : (
                     <p>Your inventory is empty.</p>
                 )}
-                <button className="add-custom-item-button" onClick={toggleCustomItemForm}>
-                    Add Custom Item
+                <button className="btn-sm" onClick={toggleCustomItemForm}>
+                    Create Custom Item
                 </button>
                 </>
             )}

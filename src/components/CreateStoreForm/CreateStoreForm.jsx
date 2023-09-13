@@ -33,7 +33,8 @@ export default function CreateStoreForm({ setHasCreatedStore, setStoreData, user
 
 
     return (
-        <div>
+      <div className="create-store-box">
+        <div className="create-store-form">
           <h2>Create Your Store</h2>
           {error && <p className="error-message">{error}</p>}
           <form autoComplete="off" onSubmit={handleSubmit}>
@@ -82,5 +83,6 @@ export default function CreateStoreForm({ setHasCreatedStore, setStoreData, user
             <button type="submit">Create Store</button>
           </form>
         </div>
+      </div>
       );
 }
